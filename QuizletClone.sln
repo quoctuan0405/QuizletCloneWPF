@@ -5,9 +5,11 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuizletClone.Domain", "QuizletClone.Domain\QuizletClone.Domain.csproj", "{0E455E7E-E7B8-449C-A833-A832A628F437}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuizletClone.EntityFramework", "QuizletClone.EntityFramework\QuizletClone.EntityFramework.csproj", "{F01AFE71-067C-4054-8855-92CBE90ED2DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuizletClone.WPF", "QuizletClone.WPF\QuizletClone.WPF.csproj", "{019C43F1-2EC6-49D8-836E-606432805B3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{C5EF70E7-E398-40C0-A9CE-786643CB8EDF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuizletClone.API", "QuizletClone.API\QuizletClone.API.csproj", "{868C4985-41A9-4610-A972-55789204B187}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Server", "Server\Server.csproj", "{AC0986D5-5F1B-49E2-B78E-CA254AA5CA82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +21,18 @@ Global
 		{0E455E7E-E7B8-449C-A833-A832A628F437}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E455E7E-E7B8-449C-A833-A832A628F437}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E455E7E-E7B8-449C-A833-A832A628F437}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F01AFE71-067C-4054-8855-92CBE90ED2DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F01AFE71-067C-4054-8855-92CBE90ED2DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F01AFE71-067C-4054-8855-92CBE90ED2DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F01AFE71-067C-4054-8855-92CBE90ED2DD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C5EF70E7-E398-40C0-A9CE-786643CB8EDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C5EF70E7-E398-40C0-A9CE-786643CB8EDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C5EF70E7-E398-40C0-A9CE-786643CB8EDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C5EF70E7-E398-40C0-A9CE-786643CB8EDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{019C43F1-2EC6-49D8-836E-606432805B3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{019C43F1-2EC6-49D8-836E-606432805B3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{019C43F1-2EC6-49D8-836E-606432805B3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{019C43F1-2EC6-49D8-836E-606432805B3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{868C4985-41A9-4610-A972-55789204B187}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{868C4985-41A9-4610-A972-55789204B187}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{868C4985-41A9-4610-A972-55789204B187}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{868C4985-41A9-4610-A972-55789204B187}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC0986D5-5F1B-49E2-B78E-CA254AA5CA82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC0986D5-5F1B-49E2-B78E-CA254AA5CA82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC0986D5-5F1B-49E2-B78E-CA254AA5CA82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC0986D5-5F1B-49E2-B78E-CA254AA5CA82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

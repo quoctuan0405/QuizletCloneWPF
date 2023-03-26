@@ -1,0 +1,51 @@
+﻿<Application x:Class="QuizletClone.WPF.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:viewmodels="clr-namespace:QuizletClone.WPF.ViewModels"
+             xmlns:views="clr-namespace:QuizletClone.WPF.Views"
+             xmlns:local="clr-namespace:QuizletClone.WPF">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="./Styles/Sidebar.xaml"/>
+                <ResourceDictionary Source="./Styles/Button.xaml"/>
+                <ResourceDictionary Source="./Styles/Set/SetListItem.xaml"/>
+                <ResourceDictionary Source="./Styles/LoginPage.xaml"/>
+                <ResourceDictionary Source="./Styles/ListSetPage.xaml"/>
+                <ResourceDictionary Source="./Styles/ProfilePage.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type viewmodels:HomeViewModel}">
+                <views:HomeView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:LoginViewModel}">
+                <views:LoginView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:ProfileViewModel}">
+                <views:ProfileView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:SetDetailViewModel}">
+                <views:SetDetailView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:CreateSetViewModel}">
+                <views:CreateSetView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:UpdateSetViewModel}">
+                <views:UpdateSetView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:SignUpViewModel}">
+                <views:SignupView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:LearningViewModel}">
+                <views:LearningView/>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -5,23 +5,24 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using QuizletClone.Domain.Model;
 using QuizletClone.Domain.Services;
+using Server.Data;
+using Server.Model;
 
-namespace QuizletClone.EntityFramework.Services
+namespace Server.Services.Base
 {
     public class GenericDataService<T> : IDataService<T> where T : DomainObject
     {
-        protected readonly IDbContextFactory<QuizletCloneDbContext> _quizletCloneDbContextFactory;
+        protected readonly IDbContextFactory<ApplicationDbContext> _quizletCloneDbContextFactory;
 
-        public GenericDataService(IDbContextFactory<QuizletCloneDbContext> quizletCloneDbContextFactory)
+        public GenericDataService(IDbContextFactory<ApplicationDbContext> quizletCloneDbContextFactory)
         {
             _quizletCloneDbContextFactory = quizletCloneDbContextFactory;
         }
 
         public async Task<T> Create(T entity)
         {
-            using (QuizletCloneDbContext context = _quizletCloneDbContextFactory.CreateDbContext())
+            using (ApplicationDbContext context = _quizletCloneDbContextFactory.CreateDbContext())
             {
                 EntityEntry<T> result = await context.Set<T>().AddAsync(entity);
                 await context.SaveChangesAsync();
@@ -32,7 +33,7 @@ namespace QuizletClone.EntityFramework.Services
 
         public async Task<bool> Delete(int id)
         {
-            using (QuizletCloneDbContext context = _quizletCloneDbContextFactory.CreateDbContext())
+            using (ApplicationDbContext context = _quizletCloneDbContextFactory.CreateDbContext())
             {
                 T entity = context.Set<T>().FirstOrDefault((e) => e.Id == id);
                 context.Set<T>().Remove(entity);
@@ -44,7 +45,7 @@ namespace QuizletClone.EntityFramework.Services
 
         public async Task<T> Get(int id)
         {
-            using (QuizletCloneDbContext context = _quizletCloneDbContextFactory.CreateDbContext())
+            using (ApplicationDbContext context = _quizletCloneDbContextFactory.CreateDbContext())
             {
                 T entity = context.Set<T>().FirstOrDefault((e) => e.Id == id);
                 return entity;
@@ -53,7 +54,7 @@ namespace QuizletClone.EntityFramework.Services
 
         public async Task<IEnumerable<T>> GetAll()
         {
-            using (QuizletCloneDbContext context = _quizletCloneDbContextFactory.CreateDbContext())
+            using (ApplicationDbContext context = _quizletCloneDbContextFactory.CreateDbContext())
             {
                 IEnumerable<T> entities = context.Set<T>().ToList();
                 return entities;
@@ -62,9 +63,9 @@ namespace QuizletClone.EntityFramework.Services
 
         public async Task<T> Update(int id, T entity)
         {
-            using (QuizletCloneDbContext context = _quizletCloneDbContextFactory.CreateDbContext())
+            using (ApplicationDbContext context = _quizletCloneDbContextFactory.CreateDbContext())
             {
-                entity.Id= id;
+                entity.Id = id;
                 context.Set<T>().Update(entity);
                 await context.SaveChangesAsync();
 

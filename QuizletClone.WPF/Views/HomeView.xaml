@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="QuizletClone.WPF.Views.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" 
+             xmlns:local="clr-namespace:QuizletClone.WPF.Views"
+             xmlns:controls="clr-namespace:QuizletClone.WPF.Controls"
+             xmlns:viewmodel="clr-namespace:QuizletClone.WPF.ViewModels"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=viewmodel:HomeViewModel}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <controls:Sidebar DataContext="{Binding Navigator}"></controls:Sidebar>
+
+        <Grid Grid.Column="1" Margin="30 20 20 20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <controls:Header DataContext="{Binding HeaderViewModel}"></controls:Header>
+
+            <TextBlock Text="Sets" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0" HorizontalAlignment="Left"
+                           Foreground="#121518"/>
+
+            <Button Grid.Row="1" HorizontalAlignment="Right" Width="150" Height="35" Style="{StaticResource primaryButton}" Command="{Binding GoToCreateSetPageCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0"/>
+                    <TextBlock Text="Add New Set"/>
+                </StackPanel>
+            </Button>
+
+            <Separator Grid.Row="3" Height="1" Background="#dae2ea" Margin="0 10 0 10"/>
+
+            <controls:SetListingControl Grid.Row="4" DataContext="{Binding SetListingViewModel}"></controls:SetListingControl>
+        </Grid>
+    </Grid>
+</UserControl>

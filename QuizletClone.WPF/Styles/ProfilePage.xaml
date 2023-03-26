@@ -1,0 +1,35 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="profileCard" TargetType="Border">
+        <Setter Property="Background" Value="#fff"/>
+        <Setter Property="CornerRadius" Value="10"/>
+    </Style>
+    <Style x:Key="profileTitle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="17"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Margin" Value="20 20 0 0"/>
+    </Style>
+    <Style x:Key="profileProperty" TargetType="StackPanel">
+        <Setter Property="Margin" Value="20 10 0 5"/>
+    </Style>
+    <Style x:Key="profilePropertyText" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="#666"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+    <Style x:Key="profileValueText" TargetType="TextBlock">
+        <Setter Property="Margin" Value="41 0 0 0"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+    <Style x:Key="profileSet" TargetType="Border">
+        <Setter Property="Background" Value="#fafafa"/>
+        <Setter Property="CornerRadius" Value="5"/>
+    </Style>
+    <Style x:Key="profileSetContent" TargetType="Grid">
+        <Setter Property="Margin" Value="10"/>
+    </Style>
+    <Style x:Key="profileSetTitle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Margin" Value="0 4 0 0"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+    </Style>
+</ResourceDictionary>

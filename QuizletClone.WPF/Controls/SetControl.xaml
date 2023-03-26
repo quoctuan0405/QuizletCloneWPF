@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="QuizletClone.WPF.Controls.SetControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QuizletClone.WPF.Controls"
+             xmlns:valueConverter="clr-namespace:QuizletClone.WPF.ValueConverters"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Border Style="{StaticResource set}" Width="250" Height="140">
+        <Border.InputBindings>
+            <MouseBinding MouseAction="LeftClick" Command="{Binding GoToSetDetailCommand}"/>
+        </Border.InputBindings>
+
+        <Border.Effect>
+            <DropShadowEffect ShadowDepth="0.5" Opacity="0.1"/>
+        </Border.Effect>
+
+        <Grid>
+            <StackPanel>
+                <TextBlock Text="{Binding Name, FallbackValue='Set name'}" Style="{StaticResource setName}"/>
+
+                <Border HorizontalAlignment="Left" Style="{StaticResource numberOfTermBorder}">
+                    <TextBlock Text="{Binding TermCount, FallbackValue=0, Converter={valueConverter:NumberOfTermToTextConverter}}" Style="{StaticResource numberOfTermText}"/>
+                </Border>
+
+                <Grid VerticalAlignment="Bottom" Margin="20 35 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Source="/Images/unitytut-birdbody.png" Style="{StaticResource authorAvatar}"/>
+                    <TextBlock Grid.Column="1" Text="{Binding AuthorName, FallbackValue=Author}" Style="{StaticResource authorName}"/>
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

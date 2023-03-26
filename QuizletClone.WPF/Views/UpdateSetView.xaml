@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="QuizletClone.WPF.Views.UpdateSetView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" 
+             xmlns:local="clr-namespace:QuizletClone.WPF.Views"
+             xmlns:controls="clr-namespace:QuizletClone.WPF.Controls"
+             xmlns:viewmodel="clr-namespace:QuizletClone.WPF.ViewModels"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=viewmodel:UpdateSetViewModel}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <controls:Sidebar DataContext="{Binding Navigator}"></controls:Sidebar>
+
+        <Grid Grid.Column="1" Margin="30 20 20 20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <controls:Header DataContext="{Binding HeaderViewModel}"></controls:Header>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="1" Width="80" Height="35" Style="{StaticResource primaryButton}" Margin="0 0 0 2"
+                        Command="{Binding UpdateSetCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <Icon:PackIconMaterial Kind="Pencil" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0"/>
+                        <TextBlock Text="Update"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Row="1" Margin="0 10">
+                <StackPanel HorizontalAlignment="Left">
+                    <Border BorderThickness="1" BorderBrush="#acb0af" Width="350" Margin="0 10" CornerRadius="5">
+                        <Grid Margin="7 9">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Icon:PackIconMaterial Kind="FormatTitle" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0"/>
+
+                            <TextBlock x:Name="setNamePlaceholder" IsHitTestVisible="False" Text="Title" Style="{StaticResource textHint}" 
+                                       Visibility="{Binding ElementName=setNameTextbox, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+                            <TextBox x:Name="setNameTextbox" Grid.Column="1" Text="{Binding Name}" Style="{StaticResource textbox}"/>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="3">
+                <StackPanel>
+                    <controls:SetInputListingControl DataContext="{Binding UpdateSetInputListingViewModel}"></controls:SetInputListingControl>
+
+                    <Button Height="40" Style="{StaticResource primaryButton}"
+                            Command="{Binding AddNewEmptyTermCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <Icon:PackIconMaterial Kind="PlaylistPlus" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0"/>
+                            <TextBlock Text="Add more term"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>
