@@ -207,6 +207,7 @@ namespace Server.Controllers
             {
                 terms.Add(new Term()
                 {
+                    Id = term.Id,
                     Question = term.Question,
                     Answer = term.Answer,
                     Explanation = term.Explanation,

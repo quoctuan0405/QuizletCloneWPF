@@ -68,20 +68,50 @@ namespace Server.Services
         {
             using (ApplicationDbContext context = _quizletCloneDbContextFactory.CreateDbContext())
             {
-                // Remove all terms belong to this set
+                List<Term> updatedTerms = new List<Term>();
+                List<Term> createdTerms = new List<Term>();
+
+                foreach(var term in set.Terms)
+                {
+                    term.SetId = set.Id;
+
+                    if (term.Id == 0)
+                    {
+                        createdTerms.Add(term);
+                    } 
+                    else
+                    {
+                        updatedTerms.Add(term);
+                    }
+                }
+
+                // Update terms that user submit
+                context.Terms.UpdateRange(updatedTerms);
+
+                await context.SaveChangesAsync();
+
+                // Remove all terms from the set that user not submitted
+                List<int> updatedTermIds = new List<int>();
+
+                foreach(var term in updatedTerms)
+                {
+                    updatedTermIds.Add(term.Id);
+                }
+
                 var terms = await context.Terms
-                        .Where(s => s.SetId == id)
+                        .Where(t => t.SetId == id)
+                        .Where(t => !updatedTermIds.Contains(t.Id))
                         .ToListAsync();
 
-                List<int> termIds = new List<int>();
+                List<int> removeTermIds = new List<int>();
 
                 foreach (var term in terms)
                 {
-                    termIds.Add(term.Id);
+                    removeTermIds.Add(term.Id);
                 }
 
                 var userLearningTerms = await context.LearningTerms
-                        .Where(lt => termIds.Contains(lt.TermId))
+                        .Where(lt => removeTermIds.Contains(lt.TermId))
                         .ToListAsync();
 
                 foreach(var userLearningTerm in userLearningTerms)
@@ -95,6 +125,9 @@ namespace Server.Services
                     context.Terms.Remove(term);
                 }
                 await context.SaveChangesAsync();
+
+                // Insert new term
+                await context.Terms.AddRangeAsync(createdTerms);
 
                 // Update set
                 set.Id = id;

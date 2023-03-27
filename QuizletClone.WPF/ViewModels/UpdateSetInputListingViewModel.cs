@@ -31,6 +31,7 @@ namespace QuizletClone.WPF.ViewModels
                     new UpdateSetInputViewModel(RemoveItem)
                     {
                         Index = item.index,
+                        Id = item.value.Id,
                         Question = item.value.Question,
                         Answer = item.value.Answer,
                     }

@@ -47,10 +47,10 @@
 
                         <Icon:PackIconMaterial Kind="CommentQuestion" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0" Foreground="Gray"/>
 
-                        <TextBlock x:Name="questionPlaceholder" IsHitTestVisible="False" Text="Term" Style="{StaticResource textHint}" 
+                        <TextBlock x:Name="questionPlaceholder" IsHitTestVisible="False" Text="Term" Style="{StaticResource textHint}"
                                         Visibility="{Binding ElementName=questionTextbox, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
-                        <TextBox x:Name="questionTextbox" Grid.Column="1" Text="{Binding Question}" Style="{StaticResource textbox}"/>
+                        <TextBox x:Name="questionTextbox" Grid.Column="1" Text="{Binding Question}" Style="{StaticResource textbox}" AcceptsReturn="True"/>
                     </Grid>
                 </Border>
 
@@ -66,7 +66,7 @@
                         <TextBlock x:Name="answerPlaceholder" IsHitTestVisible="False" Text="Definition" Style="{StaticResource textHint}" 
                                         Visibility="{Binding ElementName=answerTextbox, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
-                        <TextBox x:Name="answerTextbox" Grid.Column="1" Text="{Binding Answer}" Style="{StaticResource textbox}"/>
+                        <TextBox x:Name="answerTextbox" Grid.Column="1" Text="{Binding Answer}" Style="{StaticResource textbox}" AcceptsReturn="True"/>
                     </Grid>
                 </Border>
             </Grid>

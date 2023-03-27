@@ -53,6 +53,7 @@ namespace QuizletClone.WPF.ViewModels
             {
                 terms.Add(new TermPayload()
                 {
+                    Id = term.Id,
                     Question = term.Question,
                     Answer = term.Answer
                 });

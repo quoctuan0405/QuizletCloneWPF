@@ -10,6 +10,7 @@ namespace QuizletClone.WPF.ViewModels
 {
     public class UpdateSetInputViewModel
     {
+        public int Id { get; set; }
         public int Index { get; set; }
         public string Question { get; set; }
         public string Answer { get; set; }
