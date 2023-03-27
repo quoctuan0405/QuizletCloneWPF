@@ -145,7 +145,10 @@ namespace QuizletClone.WPF.ViewModels
 
         private void UpdateCountLearningTermProgress()
         {
-            TermLearningCount = _store.CountLearningTerm.Count;
+            if (_store.CountLearningTerm != null)
+            {
+                TermLearningCount = _store.CountLearningTerm.Count;
+            }
         }
 
         private void IsAnsweredListener()

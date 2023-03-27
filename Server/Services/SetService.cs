@@ -199,16 +199,18 @@ namespace Server.Services
                     return null;
                 }
 
-                List<Term> randomTerms = await context.Terms
-                    .Where(t => t.SetId == setId && t.Id != term.Id)
+                List<string> randomAnswers = await context.Terms
+                    .Where(t => t.SetId == setId && t.Id != term.Id && !t.Answer.Equals(term.Answer))
                     .OrderBy(s => Guid.NewGuid())
                     .Take(3)
+                    .Select(t => t.Answer)
+                    .Distinct()
                     .ToListAsync();
 
                 term.Choices = new List<string>();
-                foreach (var randomTerm in randomTerms) 
+                foreach (var randomAnswer in randomAnswers) 
                 {
-                    term.Choices.Add(randomTerm.Answer);
+                    term.Choices.Add(randomAnswer);
                 }
 
                 return term;
